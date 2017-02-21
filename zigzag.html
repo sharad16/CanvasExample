@@ -1,0 +1,46 @@
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <canvas id="myCanvas" width="400" height="150"></canvas>
+  <script>
+
+    window.onload = function(){
+
+
+      function doMouseDown(event)
+      {
+  console.log("hhhhhhhhhhhhhhhhhhhhhh");
+      var  canvas_x=event.pageX;
+      var  canvas_y=event.pageY;
+
+    var canvas = document.getElementById("myCanvas");
+    var canvasWidth=canvas.width;
+    canvas.addEventListener("mousedown",doMouseDown,false);
+
+    var context = canvas.getContext("2d");
+    var startX = canvas_x;
+    var startY = canvas_y;
+    var zigzagSpacing = 40;
+    context.lineWidth = 5;
+   context.strokeStyle = "red"; // blue-ish color
+   context.beginPath();
+   context.moveTo(startX, startY);
+   // draw seven lines
+   for (var n = 0; n < canvas.width; n++) {
+       var x = startX + ((n + 1) * zigzagSpacing);
+       var y;
+       if (n % 2 == 0) { // if n is even...
+           y = startY + 100;
+       }
+       else { // if n is odd...
+           y = startY;
+       }
+       context.lineTo(x, y);
+   }
+    context.stroke();
+};
+}
+  </script>
+</head>
+  </html>
